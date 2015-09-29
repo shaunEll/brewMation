@@ -1,7 +1,32 @@
 ﻿extends layout
 
 block content
-  div.container
-    div.content
-      | Welcome to #{title}
+  .container-fluid
+    .row
+      h2
+        | Welcome to #{title}
+
+    .row
+      p
+        | Choose a task
+    .row
+      .well.well-lg.col-md-4
+        h3.text-center
+          p
+            a(href="#")
+              img(src="/img/cooking52.png")
+              p Recipes
+      .well.well-lg.col-md-4
+        h3.text-center
+          p
+            a(href="#")
+              img(src="/img/cooking58.png")
+              p Brew!
+      .well.well-lg.col-md-4
+        h3.text-center
+          p
+            a(href="#")
+              img(src="/img/laptop120.png")
+              p Manual Monitor
+
   div.footer
