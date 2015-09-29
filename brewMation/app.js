@@ -61,10 +61,19 @@ var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('brewMation listening at http://%s:%s', host, port);
 });
 
 var socket = require('socket.io')(server);
-var SerialPort = require("serialport").SerialPort;
+var serialPort = require("serialport");
+
+serialPort.list(function (err, ports) {
+  console.log("Listing available serial ports: ");
+  ports.forEach(function(port) {
+    console.log(port.comName);
+    console.log(port.pnpId);
+    console.log(port.manufacturer);
+  });
+});
 
 module.exports = app;
