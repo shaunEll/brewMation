@@ -4,8 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var temporal = require("temporal");
-var five = require("johnny-five");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -64,56 +62,8 @@ var server = app.listen(3000, function () {
   var port = server.address().port;
 
   console.log('brewMation listening at http://%s:%s', host, port);
+  //serialListener();
 });
 
-//var socket = require('socket.io')(server);
-
-// ******** JOHNNY-FIVE CODE ****************************
-// var board = new five.Board();
-// board.on("ready", function() {
-//   var temperature = new five.Temperature({
-//     controller: "TMP36",
-//     pin: "A0"
-//   });
-//
-//   temperature.on("change", function() {
-//       console.log(this.celsius + "°C", this.fahrenheit + "°F");
-//   });
-// });
-
-//****** NODE-SERIALPORT CODE *********************
-// var sp = require("serialport");
-//
-// //let's see which ports are available
-// sp.list(function (err, ports) {
-//   console.log("Listing available serial ports: ");
-//
-//   if(ports.length === 0) {
-//     console.log("No ports discovered!");
-//   }
-//
-//   ports.forEach(function(port) {
-//     console.log(port.comName + " " + port.pnpId);
-//   });
-// });
-//
-// var serialPort = new sp.SerialPort("COM3", {
-//   baudrate: 9600
-// }, false); // this is the openImmediately flag [default is true]
-//
-// serialPort.open(function (error) {
-//   if ( error ) {
-//     console.log('failed to open: '+error);
-//   } else {
-//     console.log('open');
-//     serialPort.on('data', function(data) {
-//       console.log('data received: ' + data);
-//     });
-//     serialPort.write("ls\n", function(err, results) {
-//       console.log('err ' + err);
-//       console.log('results ' + results);
-//     });
-//   }
-// });
 
 module.exports = app;
