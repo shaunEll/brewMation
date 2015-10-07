@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .container
+    .container-fluid
+      .row
+        h2
+          | #{title}
+
+      .row
+        p
+          | Choose a day
+      .row
+        .col-md-10
+          table.table.table-hover
+            thead
+              tr
+                th
+                  | Name
+                th
+                  | Date
+                th
+                  | Total time
+            tbody
+              each brewday, i in brewdays
+                tr
+                  td
+                    a(href="#{brewday.name}")= brewday.name
+                  td
+                    = brewday.date
+                  td
+                    = moment(brewday.endTime).diff(brewday.startTime, 'hours')
+                    | hrs
