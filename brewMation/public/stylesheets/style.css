@@ -1,7 +1,21 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.row-space {
+  margin-top:20px;
 }
-a {
-  color: #00b7ff;
+.row-space-sm {
+  margin-top:10px;
+}
+
+.dateView {
+  overflow:hidden;
+}
+.strong {
+  font-weight: bold;
+}
+
+.normal {
+  font-weight: normal;
+}
+
+.red {
+    color: rgb(158, 22, 22);
 }

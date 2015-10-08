@@ -1,0 +1,85 @@
+extends layout
+
+block content
+  .container
+    .container-fluid
+      .row
+        h2
+          | #{title}
+      .row
+        p
+      .row
+        p
+        .well.well-lg
+          .row
+            .col-md-2
+              p.strong Date:
+              = diary.date
+            .col-md-2
+              p.strong Start:
+              = moment(diary.startTime).format('LTS')
+            .col-md-2
+              p.strong End:
+              = moment(diary.endTime).format('LTS')
+          .row.row-space
+            .col-md-12
+              p.strong Description:
+              = diary.misc
+          .row.row-space
+            .col-md-12
+              p.strong Recipe:
+              a(role="button" data-toggle="collapse" href="#recipeDiv" aria-expanded="false" aria-controls="recipeDiv")
+                span.glyphicon.glyphicon-eye-open
+              = diary.recipe.name
+              #recipeDiv.collapse.well
+                include inline/recipe.jade
+      .row
+        .col-md-12
+          table.table.table-striped
+            thead
+              tr
+                th
+                  | Time
+                th
+                  | Description
+                th
+                th.text-right
+                  | Remove
+            tbody
+              each entry in diary.entries
+                tr
+                  td
+                    = moment(entry.timeStamp).format('LTS')
+                  td
+                    = entry.entry
+                  td.text-right
+                    - if(entry.important)
+                      span.glyphicon.glyphicon-warning-sign.red
+                  td.text-right
+                    a(href="#")
+                      span.glyphicon.glyphicon-remove
+
+          a.btn.btn-success.btn-sm(role="button" data-toggle="collapse" href="#newEntryDiv" aria-expanded="false" aria-controls="newEntryDiv")
+            span.glyphicon.glyphicon-plus-sign
+          #newEntryDiv.collapse.well.row-space-sm
+            form(name="addEntry",method="post",action="addEntry/#{diary.name}")
+              .row
+                .form-group.col-md-8
+                  label(for="diaryEntry") Diary Entry
+                  textarea#diaryEntry.form-control.input-sm(name="entryText" rows="3")
+                .form-group.col-md-4.dateView
+                  label(for="entryDate") Time
+                  div#entryDate.input-group.date
+              .row
+                .col-md-10
+                  label(for="entryImportant") Important Event
+                  input#entryImportant(type="checkbox" name="entryImportant")
+                .col-md-2
+                  button.btn.btn-default.btn-sm(type="submit") Submit
+    script(type="text/javascript").
+      function() {
+        ('#entryDate').datetimepicker({
+          format: 'LTS',
+          inline: true
+        });
+      })

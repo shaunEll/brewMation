@@ -8,10 +8,11 @@ block content
           | #{title}
 
       .row
-        p
-          | Choose a day
+        a.btn.btn-success(href="brewday/new" role="button") New Brewday
       .row
-        .col-md-10
+        p
+      .row
+        .col-md-12
           table.table.table-hover
             thead
               tr
@@ -22,10 +23,10 @@ block content
                 th
                   | Total time
             tbody
-              each brewday, i in brewdays
+              each brewday in brewdays
                 tr
                   td
-                    a(href="#{brewday.name}")= brewday.name
+                    a(href="brewday/view/#{brewday.name}")= brewday.name
                   td
                     = brewday.date
                   td

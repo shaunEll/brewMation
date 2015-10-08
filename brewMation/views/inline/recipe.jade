@@ -1,0 +1,57 @@
+.row
+  .col-md-4
+    h4
+      = diary.recipe.type
+    p.small
+      = diary.recipe.method
+  .col-md-3
+    .strong Initial Mash Vol.:
+      p.normal
+        = diary.recipe.mashVolume + ' Lt'
+    .strong Boil Vol.:
+      p.normal
+        = diary.recipe.boilVolume + ' Lt'
+    .strong Final Vol.:
+      p.normal
+        = diary.recipe.finalVolume + ' Lt'
+  .col-md-3
+    .strong Est. O.G.:
+      p.normal
+        = diary.recipe.estOG + ' SG'
+    .strong Est F.G.:
+      p.normal
+        = diary.recipe.estFG + ' SG'
+  .col-md-2
+    .strong Est ABV:
+      p.normal
+        = diary.recipe.estABV + '%'
+    .strong Bitterness:
+      p.normal
+        = diary.recipe.IBU + ' IBU'
+    .strong Colour:
+      p.normal
+        = diary.recipe.colour + ' SRM'
+.row
+  .col-md-8.col-md-offset-2.row-space-sm.panel
+    table.table.table-striped
+      thead
+        tr
+          th
+            | Quantity
+          th
+            | Ingredient
+          th
+            | Type
+          th.text-right
+            | % or AA
+      tbody
+        each entry in diary.recipe.ingredients
+          tr
+            td
+              = entry.amount
+            td
+              = entry.ingredient
+            td
+              = entry.type
+            td.text-right
+              = entry.misc
