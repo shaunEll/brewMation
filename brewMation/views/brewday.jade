@@ -32,3 +32,9 @@ block content
                   td
                     = moment(brewday.endTime).diff(brewday.startTime, 'hours')
                     | hrs
+                  td
+                    a(href="brewday/view/#{brewday.name}") view
+                    |  | 
+                    a(href="brewday/edit/#{brewday.name}") edit
+                    |  |
+                    a(href="brewday/delete/#{brewday.name}") delete

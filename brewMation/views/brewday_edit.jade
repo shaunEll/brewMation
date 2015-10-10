@@ -27,11 +27,11 @@ block content
               = diary.misc
           .row.row-space
             .col-md-12
-              p.strong Recipe:
-              a(role="button" data-toggle="collapse" href="#recipeDiv" aria-expanded="false" aria-controls="recipeDiv")
-                span.glyphicon.glyphicon-eye-open
-              = diary.recipe.name
-              #recipeDiv.collapse.well
+              p.strong Recipe: 
+                a(role="button" data-toggle="collapse" href="#recipeDiv" aria-expanded="false" aria-controls="recipeDiv")
+                  span.glyphicon.glyphicon-eye-open
+                  = diary.recipe.name
+              #recipeDiv.collapse.panel
                 include inline/recipe.jade
       .row
         .col-md-12

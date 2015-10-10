@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  .container
+    .container-fluid
+      .row
+        h2
+          | #{title}
+
+      .row
+        a.btn.btn-success(href="brewday/new" role="button") New Recipe
+      .row
+        p
+      .row
+        .col-md-12
+          table.table.table-hover
+            thead
+              tr
+                th
+                  | Name
+                th
+                  | Style
+                th
+                  | Author
+                th
+                  | Rating
+            tbody
+              each recipe in recipes
+                tr
+                  td
+                    a(href="recipe/view/#{recipe.name}")= recipe.name
+                  td
+                    = recipe.style
+                  td
+                    = recipe.author
+                  td
+                    = recipe.rating
+                    | /5
+                  td
+                    a(href="recipe/view/#{recipe.name}") view
+                    |  |
+                    a(href="recipe/edit/#{recipe.name}") edit
+                    |  |
+                    a(href="recipe/delete/#{recipe.name}") delete

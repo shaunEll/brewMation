@@ -1,0 +1,72 @@
+extends layout
+
+block content
+  .container
+    .container-fluid
+      .row
+        h2
+          | #{title}
+      .row
+        p
+      .row
+        p
+        .well.well-lg
+          .row
+            .col-md-4
+              h3
+                = recipe.style
+              p
+                = recipe.method
+              p.small by 
+                = recipe.author
+            .col-md-3
+              .strong Initial Mash Vol.:
+                p.normal
+                  = recipe.mashVolume + ' Lt'
+              .strong Boil Vol.:
+                p.normal
+                  = recipe.boilVolume + ' Lt'
+              .strong Final Vol.:
+                p.normal
+                  = recipe.finalVolume + ' Lt'
+            .col-md-3
+              .strong Est. O.G.:
+                p.normal
+                  = recipe.estOG + ' SG'
+              .strong Est F.G.:
+                p.normal
+                  = recipe.estFG + ' SG'
+            .col-md-2
+              .strong Est ABV:
+                p.normal
+                  = recipe.estABV + '%'
+              .strong Bitterness:
+                p.normal
+                  = recipe.IBU + ' IBU'
+              .strong Colour:
+                p.normal
+                  = recipe.colour + ' SRM'
+          .row.row-space
+            .col-md-8.col-md-offset-2.row-space-sm
+              table.table.table-striped
+                thead
+                  tr
+                    th
+                      | Quantity
+                    th
+                      | Ingredient
+                    th
+                      | Type
+                    th.text-right
+                      | % or AA
+                tbody
+                  each entry in recipe.ingredients
+                    tr
+                      td
+                        = entry.amount
+                      td
+                        = entry.ingredient
+                      td
+                        = entry.type
+                      td.text-right
+                        = entry.misc

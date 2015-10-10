@@ -1,5 +1,7 @@
-.row
-  .col-md-4
+.row.row-space
+  .col-md-3.col-md-offset-1
+    h3
+      = diary.recipe.name
     h4
       = diary.recipe.type
     p.small
@@ -31,8 +33,8 @@
     .strong Colour:
       p.normal
         = diary.recipe.colour + ' SRM'
-.row
-  .col-md-8.col-md-offset-2.row-space-sm.panel
+.row.row-space
+  .col-md-8.col-md-offset-2.row-space-sm
     table.table.table-striped
       thead
         tr
@@ -41,7 +43,7 @@
           th
             | Ingredient
           th
-            | Type
+            | Style
           th.text-right
             | % or AA
       tbody
@@ -52,6 +54,6 @@
             td
               = entry.ingredient
             td
-              = entry.type
+              = entry.style
             td.text-right
               = entry.misc
